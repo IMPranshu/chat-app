@@ -1,23 +1,26 @@
-
 import 'package:flutter/material.dart';
 import 'package:chap/common/middlewares/middlewares.dart';
 
 import 'package:get/get.dart';
 
+// index.dart refers to all the files in the welcome dir so we can refer only that file
+import '../../pages/frame/welcome/index.dart';
 import 'routes.dart';
 
 class AppPages {
   static const INITIAL = AppRoutes.INITIAL;
   static final RouteObserver<Route> observer = RouteObservers();
   static List<String> history = [];
- /*
+
+  // this is the route which holds the name
   static final List<GetPage> routes = [
-    // 免登陆
+    // boot screen of the app
     GetPage(
       name: AppRoutes.INITIAL,
-      page: () => WelcomePage(),
+      page: () => const WelcomePage(),
       binding: WelcomeBinding(),
     ),
+    /*
     GetPage(
       name: AppRoutes.SIGN_IN,
       page: () => SignInPage(),
@@ -53,12 +56,6 @@ class AppPages {
 
     GetPage(name: AppRoutes.Photoimgview, page: () => PhotoImgViewPage(), binding: PhotoImgViewBinding()),
     GetPage(name: AppRoutes.VoiceCall, page: () => VoiceCallViewPage(), binding: VoiceCallViewBinding()),
-    GetPage(name: AppRoutes.VideoCall, page: () => VideoCallPage(), binding: VideoCallBinding()),
-  ];*/
-
-
-
-
-
-
+    GetPage(name: AppRoutes.VideoCall, page: () => VideoCallPage(), binding: VideoCallBinding()), */
+  ];
 }
