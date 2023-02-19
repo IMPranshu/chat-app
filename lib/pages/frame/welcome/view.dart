@@ -12,8 +12,10 @@ class WelcomePage extends GetView<WelcomeController> {
 
   Widget _buildPageHeadTitle(String title) {
     return Container(
+      margin: EdgeInsets.only(top: 350),
       child: Text(
         title,
+        textAlign: TextAlign.center,
         style: const TextStyle(
           color: AppColors.primaryElementText,
           fontFamily: "Montserrat",
@@ -27,11 +29,14 @@ class WelcomePage extends GetView<WelcomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: AppColors.primaryElement,
         body: Container(
-      //* special trick to use the variable from other places is to use the keyword "controller"
-      // as controller is the object of WelcomeController[Similar to OOPs concept]
-      child: _buildPageHeadTitle(controller
-          .title), // the title is coming from the controller, so for that we need to bind this view with the controller
-    ));
+            width: 360,
+            height: 780,
+            //* special trick to use the variable from other places is to use the keyword "controller"
+            // as controller is the object of WelcomeController[Similar to OOPs concept]
+            child: _buildPageHeadTitle(controller
+                .title) // the title is coming from the controller, so for that we need to bind this view with the controller
+            ));
   }
 }
