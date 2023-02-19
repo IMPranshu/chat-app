@@ -1,5 +1,6 @@
 import 'package:chap/common/routes/pages.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -13,14 +14,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // as we are using Getx we have to wrap everything in "Get" controleler
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      initialRoute: AppPages.INITIAL,
-      getPages: AppPages.routes,
-    );
+
+    // we need to wrap this around screenutil for device-wise automatic resizing
+
+    return ScreenUtilInit(
+        designSize: const Size(360, 780),
+        builder: (context, child) => GetMaterialApp(
+              debugShowCheckedModeBanner: false,
+              title: 'Flutter Demo',
+              theme: ThemeData(
+                primarySwatch: Colors.blue,
+              ),
+              initialRoute: AppPages.INITIAL,
+              getPages: AppPages.routes,
+            ));
   }
 }

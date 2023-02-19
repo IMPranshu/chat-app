@@ -13,6 +13,8 @@ class WelcomeController extends GetxController {
   void onReady() {
     super.onReady(); // we will do transitions using this
     // from here we can go do different places i.e. Routing
+    // everything is getting initialised and then this is getting executed.
+    // so now we will and can got to new routes/pages
     print(" WelcomeController");
   }
 }
