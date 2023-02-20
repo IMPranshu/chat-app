@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:chap/pages/frame/welcome/state.dart';
 
+import '../../../common/routes/names.dart';
+
 class WelcomeController extends GetxController {
   WelcomeController(); // the controller(it's the constructor).
   // it sits between UI & State.
@@ -15,6 +17,10 @@ class WelcomeController extends GetxController {
     // from here we can go do different places i.e. Routing
     // everything is getting initialised and then this is getting executed.
     // so now we will and can got to new routes/pages
-    print(" WelcomeController");
+    // so first we go to the sign in page
+    Future.delayed(
+        // wait 3 seconds later and call the AppRoutes function
+        const Duration(seconds: 3),
+        () => Get.offAllNamed(AppRoutes.Message));
   }
 }
