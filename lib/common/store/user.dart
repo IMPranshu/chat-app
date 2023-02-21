@@ -5,23 +5,28 @@ import 'package:chap/common/services/services.dart';
 import 'package:chap/common/values/values.dart';
 import 'package:get/get.dart';
 
+// this class as from it name itself tells it stores user data
+// we are using Controller instead of service as the data of this is not needed all the time in the memory
 class UserStore extends GetxController {
   // this is one of the config files for our app
   // config files should be loaded in the begining
   // so in main.dart file we have to add this UserStore to get loaded
   static UserStore get to => Get.find();
 
-  // 是否登录
+  // variable for checking if the user us logged in or not
+  // it's default value is false
   final _isLogin = false.obs;
-  // 令牌 token
+  // this variable is used to remember every user as a unique user
   String token = '';
-  // 用户 profile
+  //
   final _profile = UserItem().obs;
 
   bool get isLogin => _isLogin.value;
   UserItem get profile => _profile.value;
   bool get hasToken => token.isNotEmpty;
 
+  // in a GetxController onInit method is the first method that gets called in it's lifecycle
+  // here we can do initialization and checking
   @override
   void onInit() {
     super.onInit();

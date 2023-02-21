@@ -1,4 +1,3 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class LoginRequestEntity {
@@ -23,16 +22,17 @@ class LoginRequestEntity {
   });
 
   Map<String, dynamic> toJson() => {
-    "type": type,
-    "name": name,
-    "description": description,
-    "email": email,
-    "phone": phone,
-    "avatar": avatar,
-    "open_id": open_id,
-    "online": online,
-  };
+        "type": type,
+        "name": name,
+        "description": description,
+        "email": email,
+        "phone": phone,
+        "avatar": avatar,
+        "open_id": open_id,
+        "online": online,
+      };
 }
+
 //api post response msg
 class UserLoginResponseEntity {
   int? code;
@@ -53,7 +53,6 @@ class UserLoginResponseEntity {
       );
 }
 
-
 // login result
 class UserItem {
   String? access_token;
@@ -63,7 +62,7 @@ class UserItem {
   String? avatar;
   int? online;
   int? type;
-
+  // all these varibales forms the object that helps to store the user information
   UserItem({
     this.access_token,
     this.token,
@@ -73,9 +72,10 @@ class UserItem {
     this.online,
     this.type,
   });
-
-  factory UserItem.fromJson(Map<String, dynamic> json) =>
-      UserItem(
+  // we will take all the data from above and pass this in the fromJSON method
+  // the output of this method is an object -
+  //* because it is important when we receive the data from the server we convert it to an object
+  factory UserItem.fromJson(Map<String, dynamic> json) => UserItem(
         access_token: json["access_token"],
         token: json["token"],
         name: json["name"],
@@ -84,16 +84,17 @@ class UserItem {
         online: json["online"],
         type: json["type"],
       );
-
+  //* when we want to save any data to the server we need to save it in JSON format.
+  // so we give this method a object and it converts it to the JSON format and then the server saves it
   Map<String, dynamic> toJson() => {
-    "access_token": access_token,
-    "token": token,
-    "name": name,
-    "description": description,
-    "avatar": avatar,
-    "online": online,
-    "type": type,
-  };
+        "access_token": access_token,
+        "token": token,
+        "name": name,
+        "description": description,
+        "avatar": avatar,
+        "online": online,
+        "type": type,
+      };
 }
 
 class UserData {
@@ -112,9 +113,9 @@ class UserData {
   });
 
   factory UserData.fromFirestore(
-      DocumentSnapshot<Map<String, dynamic>> snapshot,
-      SnapshotOptions? options,
-      ) {
+    DocumentSnapshot<Map<String, dynamic>> snapshot,
+    SnapshotOptions? options,
+  ) {
     final data = snapshot.data();
     return UserData(
       token: data?['token'],
@@ -135,5 +136,3 @@ class UserData {
     };
   }
 }
-
-
