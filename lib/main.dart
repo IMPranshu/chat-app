@@ -1,9 +1,16 @@
 import 'package:chap/common/routes/pages.dart';
+import 'package:chap/common/store/store.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'global.dart';
 
-void main() {
+Future<void> main() async {
+  // we can inject the User config using this method
+  //but this is bad practice as we have no control over it
+  //* Get.put<UserStore>(UserStore());
+  // instead we use the below which is better architecture
+  await Global.init();
   runApp(const MyApp());
 }
 

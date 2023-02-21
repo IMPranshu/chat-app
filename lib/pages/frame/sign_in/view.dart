@@ -13,6 +13,10 @@ class SignInPage extends GetView<SignInController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return const Scaffold(
+      body: Center(
+        child: Text("Sign-In Page"),
+      ),
+    );
   }
 }

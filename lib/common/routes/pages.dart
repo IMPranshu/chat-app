@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 // index.dart refers to all the files in the welcome dir so we can refer only that file
 import '../../pages/frame/welcome/index.dart';
+import '../../pages/frame/sign_in/index.dart';
 import 'routes.dart';
 import '../../pages/message/index.dart';
 
@@ -21,13 +22,13 @@ class AppPages {
       page: () => const WelcomePage(),
       binding: WelcomeBinding(),
     ),
-    /*
+
     GetPage(
       name: AppRoutes.SIGN_IN,
-      page: () => SignInPage(),
+      page: () => const SignInPage(),
       binding: SignInBinding(),
     ),
-
+    /*
     // 需要登录
     // GetPage(
     //   name: AppRoutes.Application,
