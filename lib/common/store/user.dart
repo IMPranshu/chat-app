@@ -30,6 +30,7 @@ class UserStore extends GetxController {
   @override
   void onInit() {
     super.onInit();
+    // when we first run the app all the key values should be returned empty
     token = StorageService.to.getString(STORAGE_USER_TOKEN_KEY);
     var profileOffline = StorageService.to.getString(STORAGE_USER_PROFILE_KEY);
     if (profileOffline.isNotEmpty) {
@@ -38,13 +39,13 @@ class UserStore extends GetxController {
     }
   }
 
-  // 保存 token
+  // saving token
   Future<void> setToken(String value) async {
     await StorageService.to.setString(STORAGE_USER_TOKEN_KEY, value);
     token = value;
   }
 
-  // 获取 profile
+  // get profile
   Future<String> getProfile() async {
     if (token.isEmpty) return "";
     // var result = await UserAPI.profile();
@@ -53,17 +54,23 @@ class UserStore extends GetxController {
     return StorageService.to.getString(STORAGE_USER_PROFILE_KEY);
   }
 
-  // 保存 profile
+  // saving profile
+  // here profile data is an object
   Future<void> saveProfile(UserItem profile) async {
     _isLogin.value = true;
+    // profile is an object and we want to store it in our StorageService/server we need to convert it to string-like
+    // so we are using jsonEncode method for doing just that
     StorageService.to.setString(STORAGE_USER_PROFILE_KEY, jsonEncode(profile));
     _profile(profile);
     setToken(profile.access_token!);
   }
 
-  // 注销
+  // this method is called during logout
   Future<void> onLogout() async {
     // if (_isLogin.value) await UserAPI.logout();
+
+    // as we logout from the app we want to remove the user information stored in the memory
+    //* because the same app in the same device can be used by different people
     await StorageService.to.remove(STORAGE_USER_TOKEN_KEY);
     await StorageService.to.remove(STORAGE_USER_PROFILE_KEY);
     _isLogin.value = false;
