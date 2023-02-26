@@ -1,5 +1,5 @@
 name: chap
-description: A new Flutter project.
+description: A Chat Applucation built using Flutter.
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -118,6 +118,11 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: "^0.9.2"
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icons/launcher.png"
 
 
   flutter_lints: ^2.0.0
