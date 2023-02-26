@@ -3,6 +3,8 @@
 
 import 'package:chap/common/services/services.dart';
 import 'package:chap/common/store/store.dart';
+import 'package:chap/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -11,6 +13,10 @@ import 'package:get/get.dart';
 class Global {
   static Future init() async {
     WidgetsFlutterBinding.ensureInitialized();
+    // this method is required for sucessfully logging into the app
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
     // in StorageService we have used inIt method which returns "Future" and is async
     // if we want to load these type of controller we have to use putAsync to load it
     // becuase it returns Future and it may delay for uncertain amount of time and to make sure that nothing crashes, we use putAsync
