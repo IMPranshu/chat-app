@@ -23,5 +23,8 @@ class Global {
     // also in database operation then it is saved in  GetxService methods and it returns future. In this case we use Get.putAsync to load and insert in the memory and so that we wait until everything is saved/done
     await Get.putAsync<StorageService>(() => StorageService().init());
     Get.put<UserStore>(UserStore());
+
+    // if we have an app sign in functionality and no logout option and try to login again and again
+    // as we are already in login state. o we have to provide an option to logout
   }
 }
