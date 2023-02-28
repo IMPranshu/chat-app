@@ -43,6 +43,7 @@ class SignInController extends GetxController {
           loginPanelListRequestEntity.email = email;
           loginPanelListRequestEntity.open_id = id;
           loginPanelListRequestEntity.type = 2;
+          asyncPostAllData();
         }
       } else {
         if (kDebugMode) {
@@ -54,5 +55,16 @@ class SignInController extends GetxController {
         print("...error with login $e");
       }
     }
+  }
+
+  // this method is very important
+  // it would load all the async data meaning it would load data from dserver
+  // in general when "async" is used then it generally does some networking and/or loading work from storage and it will take a bot of time
+
+  // as we have signin method so after each signin we will call this method
+  asyncPostAllData() {
+    // this is the place where we will the routing
+    print("... let's go to message page....");
+    Get.offAllNamed(AppRoutes.Message);
   }
 }

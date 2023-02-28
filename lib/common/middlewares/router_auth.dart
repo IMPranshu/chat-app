@@ -18,9 +18,11 @@ class RouteAuthMiddleware extends GetMiddleware {
   RouteSettings? redirect(String? route) {
     if (UserStore.to.isLogin ||
         route == AppRoutes.SIGN_IN ||
-        route == AppRoutes.INITIAL) {
+        route == AppRoutes.INITIAL ||
+        route == AppRoutes.Message) {
       return null;
     } else {
+      // if none of the above conditions met then we show the Sign in page
       Future.delayed(const Duration(seconds: 2),
           () => Get.snackbar("Tips", "Login expired, please login again!"));
       return const RouteSettings(name: AppRoutes.SIGN_IN);

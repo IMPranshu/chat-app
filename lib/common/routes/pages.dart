@@ -55,6 +55,7 @@ class AppPages {
       page: () => const MessagePage(),
       binding: MessageBinding(),
       middlewares: [
+        // this will check for condition before going/routing anywhere else
         RouteAuthMiddleware(priority: 1),
       ],
     ),

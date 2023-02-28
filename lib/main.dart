@@ -1,5 +1,6 @@
 import 'package:chap/common/routes/pages.dart';
 import 'package:chap/common/store/store.dart';
+import 'package:chap/common/style/style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -29,9 +30,7 @@ class MyApp extends StatelessWidget {
         builder: (context, child) => GetMaterialApp(
               debugShowCheckedModeBanner: false,
               title: 'Flutter Demo',
-              theme: ThemeData(
-                primarySwatch: Colors.blue,
-              ),
+              theme: AppTheme.light,
               initialRoute: AppPages.INITIAL,
               getPages:
                   AppPages.routes, // all the routes are registered using this
