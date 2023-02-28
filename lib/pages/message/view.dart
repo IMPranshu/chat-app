@@ -37,6 +37,31 @@ class MessagePage extends GetView<MessageController> {
                             offset: const Offset(0, 1),
                           )
                         ]),
+                    // here we will check if user has any profile photo or not
+                    child: controller.state.head_detail.value.avatar == null
+                        ? Image(
+                            image:
+                                AssetImage("assets/images/account_header.png"),
+                          )
+                        : Text("hi"),
+                  ),
+                  onTap: () {
+                    controller.goProfile();
+                  },
+                ),
+                // we want to show the online green dot on the image
+                Positioned(
+                  bottom: 5.w,
+                  right: 0.w,
+                  height: 14.w,
+                  child: Container(
+                    width: 14.w,
+                    height: 14.w,
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                            width: 2.w, color: AppColors.primaryElementText),
+                        color: AppColors.primaryElementStatus,
+                        borderRadius: BorderRadius.all(Radius.circular(12.w))),
                   ),
                 )
               ],

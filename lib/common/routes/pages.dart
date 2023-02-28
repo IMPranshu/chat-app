@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 // index.dart refers to all the files in the welcome dir so we can refer only that file
 import '../../pages/frame/welcome/index.dart';
 import '../../pages/frame/sign_in/index.dart';
+import '../../pages/profile/index.dart';
 import 'routes.dart';
 import '../../pages/message/index.dart';
 
@@ -59,9 +60,14 @@ class AppPages {
         RouteAuthMiddleware(priority: 1),
       ],
     ),
-    /*
+
     //我的
-    GetPage(name: AppRoutes.Profile, page: () => ProfilePage(), binding: ProfileBinding()),
+    GetPage(
+      name: AppRoutes.Profile,
+      page: () => const ProfilePage(),
+      binding: ProfileBinding(),
+    ),
+/*
     //聊天详情
     GetPage(name: AppRoutes.Chat, page: () => ChatPage(), binding: ChatBinding()),
 
