@@ -1,5 +1,7 @@
+import 'package:chap/common/store/user.dart';
 import 'package:chap/pages/profile/state.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../common/routes/names.dart';
 
@@ -11,16 +13,11 @@ class ProfileController extends GetxController {
   final title = " # Chap . "; // this variable will not change over time
   final state = ProfileState(); // created a variable as we can use it later
 
-  @override
-  void onReady() {
-    super.onReady(); // we will do transitions using this
-    // from here we can go do different places i.e. Routing
-    // everything is getting initialised and then this is getting executed.
-    // so now we will and can got to new routes/pages
-    // so first we go to the sign in page
-    Future.delayed(
-        // wait 3 seconds later and call the AppRoutes function
-        const Duration(seconds: 3),
-        () => Get.offAllNamed(AppRoutes.Message));
+  void goLogout() async {
+    await GoogleSignIn()
+        .signOut(); // this is good enough to disconnect with the google servers only.
+
+    await UserStore.to
+        .onLogout(); // this is needed to remove any user related data from our app and also go automatically to the login page
   }
 }
