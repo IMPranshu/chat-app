@@ -23,9 +23,25 @@ class ProfilePage extends GetView<ProfileController> {
     );
   }
 
-  Widget _buildLogo() {
+  Widget _buildProfilePhoto() {
     return Stack(
-      children: [Container()],
+      children: [
+        Container(
+          width: 120.w,
+          height: 120.w,
+          decoration: BoxDecoration(
+              color: AppColors.primarySecondaryBackground,
+              borderRadius: BorderRadius.all(Radius.circular(60.w)),
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.grey.withOpacity(0.1),
+                    spreadRadius: 1,
+                    blurRadius: 2,
+                    offset: Offset(0, 1))
+              ]),
+          child: Image(image: AssetImage("assets/images/account_header.png")),
+        ),
+      ],
     );
   }
 
@@ -40,7 +56,7 @@ class ProfilePage extends GetView<ProfileController> {
             SliverToBoxAdapter(
               child: Container(
                 child: Column(
-                  children: [],
+                  children: [_buildProfilePhoto()],
                 ),
               ),
             )
